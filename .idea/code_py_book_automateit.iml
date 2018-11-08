@@ -4,7 +4,7 @@
     <content url="file://$MODULE_DIR$">
       <excludePattern pattern="._*" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.7 (code_py_book_automateit)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.6 (pynista)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TestRunnerService">
