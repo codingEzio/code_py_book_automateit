@@ -3,27 +3,47 @@ import subprocess
 import requests
 
 # url
-KEYWORD = "mackenzie+foy"
+KEYWORD = "Mary+Elizabeth+Winstead"
 url = u"https://celebmafia.com/page/1/?s=" + KEYWORD
+
+# [celeb list reminder]
+# 	mackenzie+foy
+# 	Mary+Elizabeth+Winstead
 
 # get page
 page = requests.get(url).text
 soup = BeautifulSoup(page, features="lxml")
 
 # find picture links
-images = [ i['src'] for i in soup.find_all('_img', {"class": "wp-image-143424"})]
+#   The link itself reveals how many pics out there!
+#   e.g.
+# 		"... /2018/10/mary-elizabeth-winstead- ... -in-la-6.jpg"
+# 	That means this album got 7 pictures
+# 		both starts with the same url
+# 		only the '6' changed to (0, 1, 2, 3, 4, 5, 6)
+images = [i['src']
+          for i in soup.find_all('img', {"class": "wp-image-143424"})]
+
 
 # thumbnail => full resolution
 img_full = []
 
 for i in images:
-	i = i.replace('_thumbnail', '')
-	img_full.append(i)
+    i = i.replace('_thumbnail', '')
+    img_full.append(i)
 
 # download
-for i in img_full:
-	cmd = ['wget', i, '-P', 'tmp']
-	subprocess.run(cmd)
+
+
+def down_it(flags="no"):
+
+    if flags == "yes":
+        for i in img_full:
+            cmd = ['wget', i, '-P', 'tmp']
+            subprocess.run(cmd)
+
+
+down_it()
 
 
 """
