@@ -1,5 +1,6 @@
 
 # My own 
+.idea/*
 ._*
 *.txt
 env
