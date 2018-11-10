@@ -7,6 +7,8 @@ import sys
 
 
 def downloadAllImages(celeb, fromPage, numberOfPages):
+    """ This func was NOT written by me """
+
     urli = 'http://celebmafia.com/' + celeb + '/'
 
     for i in range(fromPage, fromPage+numberOfPages+1):
